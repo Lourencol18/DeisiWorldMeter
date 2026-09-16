@@ -1,1 +1,101 @@
-a22305861;Lourenço Luís
+# DEISI World Meter
+
+Projeto Java desenvolvido para análise e consulta de dados populacionais de países, cidades e anos históricos. O programa lê ficheiros CSV com informação geográfica e demográfica e permite executar diversas consultas em modo de linha de comandos.
+
+## Objetivo
+
+O projeto foi implementado para:
+
+- carregar dados de países, cidades e população;
+- validar e filtrar registos inválidos;
+- responder a consultas sobre cidades, densidade, evolução populacional e rankings;
+- servir como ferramenta prática de exploração de datasets geográficos e demográficos.
+
+## Tecnologias
+
+- Java
+- JDK 20 (recomendado)
+- JUnit 5 para testes
+- Estrutura de dados em memória para processamento dos CSVs
+
+## Estrutura do projeto
+
+- `src/pt/ulusofona/aed/deisiworldmeter/` — classes principais da aplicação
+- `file/` — ficheiros CSV com os dados do projeto (`paises.csv`, `cidades.csv`, `populacao.csv`)
+- `test-files/` — datasets e testes usados para validar operações
+- `AUTHORS.txt` — autoria do projeto
+
+## Como executar
+
+### 1. Pré-requisitos
+
+- Instalar Java JDK 20 ou superior
+- Garantir que a pasta `file` está presente na raiz do projeto
+
+### 2. Compilar
+
+No terminal, na raiz do projeto:
+
+```powershell
+javac -d out (Get-ChildItem -Path src -Recurse -Filter *.java | ForEach-Object { $_.FullName })
+```
+
+### 3. Executar
+
+```powershell
+java -cp out pt.ulusofona.aed.deisiworldmeter.Main
+```
+
+O programa inicia o menu de comandos e apresenta a ajuda disponível:
+
+```text
+> HELP
+```
+
+## Exemplos de comandos
+
+```text
+COUNT_CITIES 100000
+GET_CITIES_BY_COUNTRY 2 Portugal
+SUM_POPULATIONS Portugal,Spain
+GET_HISTORY 2023 2024 Portugal
+GET_MOST_POPULOUS 5
+GET_TOP_CITIES_BY_COUNTRY 3 Portugal
+GET_DENSITY_BELOW 500 Portugal
+QUIT
+```
+
+## Comandos principais
+
+O programa suporta vários comandos, incluindo:
+
+- `COUNT_CITIES <min_population>`
+- `GET_CITIES_BY_COUNTRY <num-results> <country-name>`
+- `SUM_POPULATIONS <countries-list>`
+- `GET_HISTORY <year-start> <year-end> <country_name>`
+- `GET_MISSING_HISTORY <year-start> <year-end>`
+- `GET_MOST_POPULOUS <num-results>`
+- `GET_TOP_CITIES_BY_COUNTRY <num-results> <country-name>`
+- `GET_DUPLICATE_CITIES <min_population>`
+- `GET_COUNTRIES_GENDER_GAP <min-gender-gap>`
+- `GET_TOP_POPULATION_INCREASE <year-start> <year-end>`
+- `INSERT_CITY <alfa2> <city-name> <region> <population>`
+- `REMOVE_COUNTRY <country-name>`
+- `COUNT_REGIONS <countries_list>`
+- `GET_DENSITY_BELOW <max-density> <country_name>`
+- `HELP`
+- `QUIT`
+
+Para visualizar a lista completa de opções, utilize o comando `HELP` no programa.
+
+## Testes
+
+O projeto inclui testes JUnit para validar a leitura dos ficheiros e as operações da aplicação. Pode ser executado diretamente na IDE (IntelliJ / VS Code / qualquer ambiente com suporte JUnit).
+
+## Autor
+
+- Lourenço Luís
+
+## Observações
+
+Este projeto foi desenvolvido como exercício académico e depende dos dados CSV presentes na pasta `file/` para funcionar corretamente.
